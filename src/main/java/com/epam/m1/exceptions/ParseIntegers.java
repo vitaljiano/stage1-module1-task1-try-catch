@@ -24,18 +24,22 @@ public class ParseIntegers {
         while (words.hasNext()) {
             String next = words.next();
             try {
-                justWords = String.format("%s" + " " + "%s",justWords, next);
+
                 int number = Integer.parseInt(next);
                 sum = sum + number;
 
             } catch (NumberFormatException formatException) {
+                justWords = String.format("%s" + " " + "%s",justWords, next);
                 logger.log(Level.INFO, formatException.toString());
             }
+
             if (logger.isLoggable(logger.getLevel())) {
                 logger.log(Level.INFO, String.format("Sum is " + "%s", sum));
-                logger.log(Level.INFO, String.format("Just words:" + "%s", justWords));
+                logger.log(Level.INFO, String.format("Just words: " + "%s", justWords));
             }
         }
+        System.out.println("Sum is " + sum);
+        System.out.println("Just words:" + justWords);
     }
 }
 
