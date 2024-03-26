@@ -24,10 +24,10 @@ public class ParseIntegersTest {
         PrintStream controlledOut = new PrintStream(sink);
         PrintStream defaultOut = System.out;
         System.setOut(controlledOut);
-        // when
-        ParseIntegers.main(new String[]{});
-        controlledOut.flush();
-        // then
+            // when
+            ParseIntegers.main(new String[]{});
+            controlledOut.flush();
+            // then
         String actual = sink.toString().trim();
         List<String> results = Arrays.asList(actual.split("\n"));
         String sum =

@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  * space delimiter
  */
 public class ParseIntegers {
-static Logger LOGGER;
+    static Logger logger = Logger.getLogger("");
     private static final List<String> WORDS =
             Arrays.asList(
                     "JDK 17 has released on 14 September 2021 with 10 new features, 2 feature removals and 2 feature deprecations."
@@ -23,12 +23,17 @@ static Logger LOGGER;
         String justWords = "";
         while (words.hasNext()) {
             String next = words.next();
-            int number = Integer.parseInt(next);
-            sum = sum + number;
-            justWords = justWords.concat(" " + next);
+            try {
+                justWords = justWords.concat(" " + next);
+                int number = Integer.parseInt(next);
+                sum = sum + number;
+
+            } catch (NumberFormatException formatException) {
+                System.out.println(formatException.toString());
+            }
+            logger.log(Level.INFO, "Sum is " + sum);
+            logger.log(Level.INFO, "Just words:" + justWords);
         }
-        LOGGER.log(Level.INFO,"Sum is " + sum);
-        LOGGER.log(Level.INFO,"Just words:" + justWords);
     }
 }
 
