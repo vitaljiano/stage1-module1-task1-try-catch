@@ -1,10 +1,14 @@
 package com.epam.m1.exceptions;
 
+import java.nio.charset.StandardCharsets;
+import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static java.nio.charset.StandardCharsets.*;
 
 /**
  * Complete the code, parse integers, calculate the sum of numbers in the WORDS, join strings with
@@ -24,15 +28,15 @@ public class ParseIntegers {
         while (words.hasNext()) {
             String next = words.next();
             try {
-                justWords = justWords.concat(" " + next);
+                justWords = String.format("%s" + " " + "%s",justWords, next);
                 int number = Integer.parseInt(next);
                 sum = sum + number;
 
             } catch (NumberFormatException formatException) {
                 System.out.println(formatException.toString());
             }
-            logger.log(Level.INFO, "Sum is " + sum);
-            logger.log(Level.INFO, "Just words:" + justWords);
+            logger.log(Level.INFO, String.format("Sum is " + "%s",sum));
+            logger.log(Level.INFO, String.format("Just words:" + "%s", justWords));
         }
     }
 }
